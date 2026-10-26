@@ -13,6 +13,8 @@ import {
   HeartPulse,
   Mail,
   MapPin,
+  Phone,
+  ExternalLink,
   Menu,
   Pill,
   ScanLine,
@@ -133,9 +135,76 @@ const departmentGroups = [
 ];
 
 
+const coreValues = [
+  {
+    letter: "C",
+    title: "Compassionate",
+    description: "Showing sympathy and concern for others.",
+  },
+  {
+    letter: "A",
+    title: "Altruism",
+    description: "Selfless concern for the well-being of others.",
+  },
+  {
+    letter: "R",
+    title: "Resilient",
+    description: "Able to withstand or recover quickly from different situations.",
+  },
+  {
+    letter: "E",
+    title: "Excellence",
+    description: "Strive for the best.",
+  },
+];
+
+const staffGroups = [
+  {
+    title: "Hospital Leadership",
+    members: [
+      { name: "Albert S. Salvador, MD, MHA", role: "President & CEO / Medical Director" },
+      { name: "Pilar I. Salvador, MD, FPCP, FPCEDM, MHA", role: "Vice President / Hospital Administrator" },
+      { name: "Alona S. Flores", role: "Administrative Officer" },
+      { name: "Charmaine C. Dagoco", role: "Executive Secretary" },
+    ],
+  },
+  {
+    title: "Administration & Office Services",
+    members: [
+      { name: "John Michael M. Bonifacio, ACPHR", role: "Human Resources" },
+      { name: "Francisco C. Capistrano", role: "Admitting" },
+      { name: "Ryan M. Reyes", role: "Information Technology" },
+      { name: "Alona S. Flores", role: "Medical Records" },
+      { name: "Joseph S. Velasco, CPA", role: "Accounting" },
+      { name: "Dominick A. Mercado", role: "Bookkeeper" },
+      { name: "Patricia Marie T. Torres", role: "Cashier" },
+      { name: "Kristine Michelle DR. Zarate", role: "Billing" },
+      { name: "Leizel V. Vega", role: "Social Worker" },
+      { name: "Jerycha S. Altare", role: "PhilHealth" },
+    ],
+  },
+  {
+    title: "Hospital Operations & Support",
+    members: [
+      { name: "Aljon M. Mariano", role: "Maintenance" },
+      { name: "Aldrin P. Bayanay", role: "Housekeeping" },
+      { name: "Name not listed", role: "Security Guard" },
+    ],
+  },
+];
+
+const operatingHours = [
+  "Emergency Room (ER)",
+  "Laboratory Department",
+  "X-ray",
+  "Pharmacy Department",
+  "Nurse Station",
+];
+
 const navigation = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
+  { label: "Our People", href: "#staff" },
   { label: "Departments", href: "#information" },
   { label: "Announcements", href: "#announcements" },
 ];
@@ -237,7 +306,10 @@ function App() {
               </div>
 
               <h1>
-                Because we give
+                Because at
+                <br />
+                <span>Twin Care </span>
+                we give
                 <br />
                 <span>the best healthcare</span>
                 <br />
@@ -245,9 +317,9 @@ function App() {
               </h1>
 
               <p className="hero-description">
-                Because we give the best healthcare you deserve. Find official
-                hospital information, explore our departments, and stay informed
-                through hospital-approved announcements.
+                Because at Twin Care, we give the best healthcare you deserve.
+                Find hospital information, explore our departments, and stay
+                informed through hospital-approved announcements.
               </p>
 
               <div className="hero-actions">
@@ -262,7 +334,7 @@ function App() {
 
               <div className="hero-note">
                 <ShieldCheck size={18} aria-hidden="true" />
-                <span>Official information will be published after review.</span>
+                <span>Official hospital information and confirmed service hours.</span>
               </div>
             </div>
 
@@ -318,22 +390,41 @@ function App() {
 
             <div className="intro-content">
               <h2>
-                A hospital website designed around{" "}
-                <span>people and clarity.</span>
+                Care guided by <span>purpose and compassion.</span>
               </h2>
 
               <p>
-                Twin Care Hospital Incorporated is establishing this online
-                space to make official hospital information easier to find.
-                Our goal for this website is to provide a clear, welcoming
-                experience for patients, visitors, and the wider community.
+                Twin Care Hospital Incorporated is committed to providing
+                patients with the best healthcare they deserve and a positive
+                healthcare experience.
               </p>
 
-              <p className="approval-note">
-                <ShieldCheck size={17} />
-                Hospital history, mission, vision, and other official statements
-                will be added after approval.
-              </p>
+              <div className="official-statements">
+                <article className="statement-card">
+                  <span className="section-kicker">OUR MISSION</span>
+                  <p>To provide our patients the best healthcare they deserve with great experience.</p>
+                </article>
+                <article className="statement-card">
+                  <span className="section-kicker">OUR VISION</span>
+                  <p>To be recognize as an institution by delivering a quality, affordable and excellent patient care.</p>
+                </article>
+              </div>
+
+              <div className="values-heading">
+                <span className="section-kicker">OUR CORE VALUES</span>
+                <h3>C.A.R.E.</h3>
+              </div>
+              <div className="values-grid">
+                {coreValues.map((value) => (
+                  <article className="value-card" key={value.letter}>
+                    <span className="value-letter">{value.letter}</span>
+                    <div>
+                      <h4>{value.title}</h4>
+                      <p>{value.description}</p>
+                    </div>
+                  </article>
+                ))}
+              </div>
 
               <a href="#information" className="text-link">
                 Explore hospital information <ArrowRight size={17} />
@@ -434,10 +525,43 @@ function App() {
               ))}
             </div>
 
-            <p className="directory-disclaimer">
-              Department names and classifications are subject to hospital
-              verification and approval before public release.
-            </p>
+          </div>
+        </section>
+
+        <section className="staff-section section-anchor" id="staff">
+          <div className="container">
+            <div className="directory-heading">
+              <span className="section-kicker">OUR PEOPLE</span>
+              <h2>
+                The people behind <span>patient care.</span>
+              </h2>
+              <p>
+                Meet the personnel listed in the hospital's administrative
+                organizational chart. Names and roles should be verified by
+                hospital administration before this directory is publicly promoted.
+              </p>
+            </div>
+
+            <div className="staff-groups">
+              {staffGroups.map((group) => (
+                <section className="staff-group" key={group.title}>
+                  <h3>{group.title}</h3>
+                  <div className="staff-grid">
+                    {group.members.map((member) => (
+                      <article className="staff-card" key={`${member.name}-${member.role}`}>
+                        <span className="staff-avatar" aria-hidden="true">
+                          {member.name === "Name not listed" ? "—" : member.name.charAt(0)}
+                        </span>
+                        <div>
+                          <h4>{member.name}</h4>
+                          <p>{member.role}</p>
+                        </div>
+                      </article>
+                    ))}
+                  </div>
+                </section>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -489,9 +613,8 @@ function App() {
                 <span>you need.</span>
               </h2>
               <p>
-                Official contact details, location information, and visitor
-                guidance will be displayed here after verification by the
-                hospital.
+                Contact Twin Care Hospital Incorporated or visit our official
+                Facebook page for hospital information and updates.
               </p>
             </div>
 
@@ -506,30 +629,58 @@ function App() {
                 </span>
               </div>
 
-              <div className="contact-row">
+              <a className="contact-row contact-row-link" href="tel:0448135421">
+                <span className="contact-icon">
+                  <Phone size={20} />
+                </span>
+                <span>
+                  <strong>Telephone</strong>
+                  <small>044-813-5421</small>
+                </span>
+                <ArrowUpRight className="contact-row-arrow" size={16} />
+              </a>
+
+              <a className="contact-row contact-row-link" href="mailto:twincarehospital@yahoo.com">
                 <span className="contact-icon">
                   <Mail size={20} />
                 </span>
                 <span>
-                  <strong>Official Contact</strong>
-                  <small>044-813-5421</small>
+                  <strong>Official Email</strong>
+                  <small>twincarehospital@yahoo.com</small>
                 </span>
-              </div>
+                <ArrowUpRight className="contact-row-arrow" size={16} />
+              </a>
 
-              <div className="contact-row">
+              <a
+                className="contact-row contact-row-link"
+                href="https://www.facebook.com/profile.php?id=61552647747926"
+                target="_blank"
+                rel="noreferrer"
+              >
                 <span className="contact-icon">
-                  <Clock3 size={20} />
+                  <ExternalLink size={20} />
                 </span>
                 <span>
-                  <strong>Operating Information</strong>
-                  <small>24/7</small>
+                  <strong>Official Facebook Page</strong>
+                  <small>Visit Twin Care Hospital on Facebook</small>
                 </span>
+                <ArrowUpRight className="contact-row-arrow" size={16} />
+              </a>
+
+              <div className="contact-hours">
+                <div className="contact-hours-heading">
+                  <span className="contact-icon"><Clock3 size={20} /></span>
+                  <div>
+                    <strong>Confirmed 24/7 Services</strong>
+                    <small>Open 24 hours a day, 7 days a week</small>
+                  </div>
+                </div>
+                <ul>
+                  {operatingHours.map((service) => <li key={service}>{service}</li>)}
+                </ul>
+                <p className="hours-pending">OPD and ultrasound schedules are pending confirmation.</p>
               </div>
 
-              <div className="contact-disclaimer">
-                <ShieldCheck size={17} />
-                These details will be published only after hospital approval.
-              </div>
             </div>
           </div>
         </section>
@@ -554,7 +705,7 @@ function App() {
           </a>
 
           <p className="footer-message">
-            A welcoming online home for official hospital information.
+            Because at Twin Care, we give the best healthcare you deserve.
           </p>
 
           <a href="#home" className="back-to-top">
