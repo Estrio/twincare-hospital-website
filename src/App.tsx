@@ -85,6 +85,22 @@ const informationCards = [
     icon: BedDouble,
     href: "/departments/nursing",
   },
+  {
+    number: "08",
+    title: "Dialysis Center",
+    description:
+      "Find approved information about dialysis services and patient care support.",
+    icon: BedDouble,
+    href: "/departments/dialysis",
+  },
+  {
+    number: "09",
+    title: "CT Scan Center",
+    description:
+      "Find approved information about CT scan services and patient care support.",
+    icon: BedDouble,
+    href: "/departments/ct-scan",
+  },
 ];
 
 
@@ -101,7 +117,9 @@ const departmentGroups = [
       "Radiology Department — X-ray and Ultrasound",
       "Pharmacy Department",
       "Medical Records",
-      "Nurstation Department",
+      "Nursing Services",
+      "Dialysis Center",
+      "CT Scan Center",
     ],
   },
   {
@@ -217,22 +235,6 @@ function App() {
 
   return (
     <div className="site-shell">
-      <a className="skip-link" href="#main-content">
-        Skip to content
-      </a>
-
-      <div className="topbar">
-        <div className="container topbar-inner">
-          <span className="topbar-message">
-            <Sparkles size={14} aria-hidden="true" />
-            Official hospital information, all in one place
-          </span>
-
-          <a href="#contact" className="topbar-link">
-            Hospital information <ArrowUpRight size={14} />
-          </a>
-        </div>
-      </div>
 
       <header className="site-header">
         <div className="container header-inner">

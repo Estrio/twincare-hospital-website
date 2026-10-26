@@ -3,6 +3,7 @@ import {
   ArrowRight,
   BedDouble,
   Clock3,
+  Droplets, // NEW: Dialysis icon
   FileText,
   FlaskConical,
   HelpCircle,
@@ -478,6 +479,134 @@ const departments: Record<string, DepartmentInfo> = {
         question: "Where can I check visiting policies?",
         answer:
           "Visiting policies should be confirmed directly with the hospital, as they may change.",
+      },
+    ],
+  },
+  "ct-scan": {
+    number: "08",
+    title: "CT Scan Services",
+    eyebrow: "ADVANCED DIAGNOSTIC IMAGING",
+    shortDescription:
+      "Learn about CT Scan services at Twin Care Hospital and find guidance for preparing for your imaging visit.",
+    overview:
+      "CT scanning uses specialized imaging equipment to produce detailed images of structures inside the body. Patients can contact Twin Care Hospital to ask about CT Scan availability, examination requirements, and preparation instructions for their specific procedure.",
+    icon: ScanLine,
+    hours: "Contact the hospital",
+    hoursNote:
+      "Please call the hospital to confirm current CT Scan availability, operating hours, and scheduling requirements.",
+    services: [
+      {
+        title: "CT Scan information",
+        description:
+          "Contact the hospital to ask about available CT Scan examinations and the requirements for your requested procedure.",
+      },
+      {
+        title: "Examination preparation",
+        description:
+          "Preparation requirements vary by examination. Follow the instructions provided by your healthcare professional or the imaging team.",
+      },
+      {
+        title: "Imaging requests and results",
+        description:
+          "Ask hospital personnel about imaging requests, examination procedures, and the approved process for obtaining your results.",
+      },
+    ],
+    guidance: [
+      {
+        title: "Bring your imaging request",
+        description:
+          "Bring your doctor's request or referral and any relevant medical records, if applicable.",
+      },
+      {
+        title: "Ask about preparation",
+        description:
+          "Before your appointment, confirm whether your particular examination requires fasting, contrast material, or other preparation.",
+      },
+      {
+        title: "Inform the healthcare team",
+        description:
+          "Tell your healthcare professional about relevant medical conditions, allergies, medications, or possible pregnancy so they can advise you appropriately.",
+      },
+    ],
+    faqs: [
+      {
+        question: "How do I arrange a CT Scan?",
+        answer:
+          "Contact Twin Care Hospital to ask about availability, scheduling, and any required doctor's request or referral.",
+      },
+      {
+        question: "Do I need to fast before a CT Scan?",
+        answer:
+          "Preparation depends on the examination and whether contrast material is required. Follow the specific instructions provided by your healthcare team.",
+      },
+      {
+        question: "How can I obtain my CT Scan results?",
+        answer:
+          "Please ask hospital personnel about the expected result availability and the approved process for receiving your results.",
+      },
+    ],
+  },
+  dialysis: {
+    number: "09",
+    title: "Dialysis Services",
+    eyebrow: "KIDNEY CARE & DIALYSIS",
+    shortDescription:
+      "Find general information and patient guidance for dialysis services at Twin Care Hospital.",
+    overview:
+      "Dialysis is a treatment that helps remove waste products and excess fluid from the blood when the kidneys cannot perform these functions adequately. Patients and caregivers can contact Twin Care Hospital to ask about dialysis service availability, treatment arrangements, and the requirements for an initial consultation.",
+    icon: Droplets,
+    hours: "Contact the hospital",
+    hoursNote:
+      "Please contact the hospital to confirm dialysis operating hours, treatment schedules, availability, and appointment requirements.",
+    services: [
+      {
+        title: "Dialysis service information",
+        description:
+          "Contact the hospital to ask about available dialysis services and the process for arranging an assessment.",
+      },
+      {
+        title: "Patient assessment and preparation",
+        description:
+          "Ask the healthcare team which medical records, referrals, laboratory results, or other documents are needed before treatment.",
+      },
+      {
+        title: "Treatment scheduling",
+        description:
+          "Contact the hospital to discuss treatment availability and scheduling with the appropriate healthcare personnel.",
+      },
+    ],
+    guidance: [
+      {
+        title: "Contact the hospital before visiting",
+        description:
+          "Confirm service availability, consultation requirements, and scheduling arrangements before traveling to the hospital.",
+      },
+      {
+        title: "Prepare your medical records",
+        description:
+          "Bring relevant medical records, current medication information, and referral documents if available and requested by the healthcare team.",
+      },
+      {
+        title: "Follow your care team's instructions",
+        description:
+          "Follow the treatment, medication, dietary, and fluid-management guidance provided by your qualified healthcare professionals.",
+      },
+    ],
+    faqs: [
+      {
+        question: "How can I inquire about dialysis services?",
+        answer:
+          "Call Twin Care Hospital to ask about dialysis availability, the assessment process, and how to discuss treatment arrangements with the appropriate staff.",
+      },
+      {
+        question: "What documents should I bring?",
+        answer:
+          "Requirements may vary. Ask the hospital what medical records, referrals, laboratory results, or identification you should bring.",
+      },
+      {
+        question: "How can I confirm my treatment schedule?",
+        answer:
+          "Please contact the hospital and coordinate directly with the appropriate healthcare personnel. Treatment schedules should not be assumed from this website.",
       },
     ],
   },
