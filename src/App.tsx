@@ -20,7 +20,6 @@ import {
   ScanLine,
   ShieldCheck,
   Siren,
-  Sparkles,
   Stethoscope,
   X,
 } from "lucide-react";
