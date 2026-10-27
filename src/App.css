@@ -16,7 +16,6 @@
 }
 
 .site-shell {
-  overflow: hidden;
   background: var(--white);
   color: var(--ink);
 }
@@ -162,7 +161,6 @@
 }
 
 .navigation {
-  position: sticky;
   display: flex;
   align-items: center;
   gap: 31px;
