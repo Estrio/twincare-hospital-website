@@ -162,6 +162,7 @@
 }
 
 .navigation {
+  position: sticky;
   display: flex;
   align-items: center;
   gap: 31px;
@@ -1712,4 +1713,35 @@ img {
   .contact-hours {
     padding: 17px;
   }
+}
+
+.department-directory-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: inherit;
+  text-decoration: none;
+  transition: color 180ms ease;
+}
+
+.department-directory-link:hover {
+  color: var(--color-primary, #176b58);
+}
+
+.department-directory-link:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+  border-radius: 3px;
+}
+
+.navigation a:focus-visible,
+.button:focus-visible,
+.card-link:focus-visible,
+.brand:focus-visible {
+  outline: 2px solid var(--color-primary, #176b58);
+  outline-offset: 4px;
+}
+
+.section-anchor {
+  scroll-margin-top: 100px;
 }

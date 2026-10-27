@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import {
   ArrowDown,
@@ -8,14 +7,15 @@ import {
   CheckCircle2,
   ChevronRight,
   Clock3,
+  Droplets,
+  ExternalLink,
   FileText,
   FlaskConical,
   HeartPulse,
   Mail,
   MapPin,
-  Phone,
-  ExternalLink,
   Menu,
+  Phone,
   Pill,
   ScanLine,
   ShieldCheck,
@@ -23,9 +23,8 @@ import {
   Stethoscope,
   X,
 } from "lucide-react";
-import "./App.css";
-
 import { Link } from "react-router-dom";
+import "./App.css";
 
 const informationCards = [
   {
@@ -89,7 +88,7 @@ const informationCards = [
     title: "Dialysis Center",
     description:
       "Find approved information about dialysis services and patient care support.",
-    icon: BedDouble,
+    icon: Droplets,
     href: "/departments/dialysis",
   },
   {
@@ -97,11 +96,10 @@ const informationCards = [
     title: "CT Scan Center",
     description:
       "Find approved information about CT scan services and patient care support.",
-    icon: BedDouble,
+    icon: ScanLine,
     href: "/departments/ct-scan",
   },
 ];
-
 
 const departmentGroups = [
   {
@@ -151,6 +149,17 @@ const departmentGroups = [
   },
 ];
 
+const departmentLinks: Record<string, string> = {
+  "Emergency Department": "/departments/emergency",
+  "Outpatient Department (OPD)": "/departments/outpatient",
+  "Laboratory Department": "/departments/laboratory",
+  "Radiology Department — X-ray and Ultrasound": "/departments/radiology",
+  "Pharmacy Department": "/departments/pharmacy",
+  "Medical Records": "/departments/medical-records",
+  "Nursing Services": "/departments/nursing",
+  "Dialysis Center": "/departments/dialysis",
+  "CT Scan Center": "/departments/ct-scan",
+};
 
 const coreValues = [
   {
@@ -166,7 +175,8 @@ const coreValues = [
   {
     letter: "R",
     title: "Resilient",
-    description: "Able to withstand or recover quickly from different situations.",
+    description:
+      "Able to withstand or recover quickly from different situations.",
   },
   {
     letter: "E",
@@ -179,33 +189,84 @@ const staffGroups = [
   {
     title: "Hospital Leadership",
     members: [
-      { name: "Albert S. Salvador, MD, MHA", role: "President & CEO / Medical Director" },
-      { name: "Pilar I. Salvador, MD, FPCP, FPCEDM, MHA", role: "Vice President / Hospital Administrator" },
-      { name: "Alona S. Flores", role: "Administrative Officer" },
-      { name: "Charmaine C. Dagoco", role: "Executive Secretary" },
+      {
+        name: "Albert S. Salvador, MD, MHA",
+        role: "President & CEO / Medical Director",
+      },
+      {
+        name: "Pilar I. Salvador, MD, FPCP, FPCEDM, MHA",
+        role: "Vice President / Hospital Administrator",
+      },
+      {
+        name: "Alona S. Flores",
+        role: "Administrative Officer",
+      },
+      {
+        name: "Charmaine C. Dagoco",
+        role: "Executive Secretary",
+      },
     ],
   },
   {
     title: "Administration & Office Services",
     members: [
-      { name: "John Michael M. Bonifacio, ACPHR", role: "Human Resources" },
-      { name: "Francisco C. Capistrano", role: "Admitting" },
-      { name: "Ryan M. Reyes", role: "Information Technology" },
-      { name: "Alona S. Flores", role: "Medical Records" },
-      { name: "Joseph S. Velasco, CPA", role: "Accounting" },
-      { name: "Dominick A. Mercado", role: "Bookkeeper" },
-      { name: "Patricia Marie T. Torres", role: "Cashier" },
-      { name: "Kristine Michelle DR. Zarate", role: "Billing" },
-      { name: "Leizel V. Vega", role: "Social Worker" },
-      { name: "Jerycha S. Altare", role: "PhilHealth" },
+      {
+        name: "John Michael M. Bonifacio, ACPHR",
+        role: "Human Resources",
+      },
+      {
+        name: "Francisco C. Capistrano",
+        role: "Admitting",
+      },
+      {
+        name: "Ryan M. Reyes",
+        role: "Information Technology",
+      },
+      {
+        name: "Alona S. Flores",
+        role: "Medical Records",
+      },
+      {
+        name: "Joseph S. Velasco, CPA",
+        role: "Accounting",
+      },
+      {
+        name: "Dominick A. Mercado",
+        role: "Bookkeeper",
+      },
+      {
+        name: "Patricia Marie T. Torres",
+        role: "Cashier",
+      },
+      {
+        name: "Kristine Michelle DR. Zarate",
+        role: "Billing",
+      },
+      {
+        name: "Leizel V. Vega",
+        role: "Social Worker",
+      },
+      {
+        name: "Jerycha S. Altare",
+        role: "PhilHealth",
+      },
     ],
   },
   {
     title: "Hospital Operations & Support",
     members: [
-      { name: "Aljon M. Mariano", role: "Maintenance" },
-      { name: "Aldrin P. Bayanay", role: "Housekeeping" },
-      { name: "Name not listed", role: "Security Guard" },
+      {
+        name: "Aljon M. Mariano",
+        role: "Maintenance",
+      },
+      {
+        name: "Aldrin P. Bayanay",
+        role: "Housekeeping",
+      },
+      {
+        name: "Name not listed",
+        role: "Security Guard",
+      },
     ],
   },
 ];
@@ -226,7 +287,6 @@ const navigation = [
   { label: "Announcements", href: "#announcements" },
 ];
 
-
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -234,7 +294,6 @@ function App() {
 
   return (
     <div className="site-shell">
-
       <header className="site-header">
         <div className="container header-inner">
           <a
@@ -243,13 +302,13 @@ function App() {
             aria-label="Twin Care Hospital Incorporated home"
             onClick={closeMenu}
           >
-          <img
-            className="brand-logo"
-            src="/images/tchi-logo.png"
-            alt=""
-            width={58}
-            height={58}
-          />
+            <img
+              className="brand-logo"
+              src="/images/tchi-logo.png"
+              alt=""
+              width={58}
+              height={58}
+            />
 
             <span className="brand-copy">
               <span className="brand-name">TWIN CARE</span>
@@ -279,7 +338,9 @@ function App() {
               <a
                 key={item.href}
                 href={item.href}
-                className={item.label === "Home" ? "nav-link active" : "nav-link"}
+                className={
+                  item.label === "Home" ? "nav-link active" : "nav-link"
+                }
                 onClick={closeMenu}
               >
                 {item.label}
@@ -318,9 +379,10 @@ function App() {
               </h1>
 
               <p className="hero-description">
-                Because at Twin Care, we give the best healthcare you deserve.
-                Find hospital information, explore our departments, and stay
-                informed through hospital-approved announcements.
+                Explore Twin Care Hospital Incorporated&apos;s departments,
+                find essential hospital contact information, learn about our
+                services, and stay updated through official hospital
+                announcements.
               </p>
 
               <div className="hero-actions">
@@ -335,7 +397,9 @@ function App() {
 
               <div className="hero-note">
                 <ShieldCheck size={18} aria-hidden="true" />
-                <span>Official hospital information and confirmed service hours.</span>
+                <span>
+                  Official hospital information and confirmed service hours.
+                </span>
               </div>
             </div>
 
@@ -354,9 +418,12 @@ function App() {
                   <span className="caption-icon">
                     <HeartPulse size={20} />
                   </span>
+
                   <span>
                     <strong>Care. Compassion. Community.</strong>
-                    <small>A welcoming place to find hospital information</small>
+                    <small>
+                      A welcoming place to find hospital information
+                    </small>
                   </span>
                 </div>
               </div>
@@ -365,6 +432,7 @@ function App() {
                 <span className="floating-icon">
                   <CheckCircle2 size={21} />
                 </span>
+
                 <span>
                   <strong>Information you can find</strong>
                   <small>Hospital updates and resources</small>
@@ -403,11 +471,18 @@ function App() {
               <div className="official-statements">
                 <article className="statement-card">
                   <span className="section-kicker">OUR MISSION</span>
-                  <p>To provide our patients the best healthcare they deserve with great experience.</p>
+                  <p>
+                    To provide our patients the best healthcare they deserve
+                    with great experience.
+                  </p>
                 </article>
+
                 <article className="statement-card">
                   <span className="section-kicker">OUR VISION</span>
-                  <p>To be recognize as an institution by delivering a quality, affordable and excellent patient care.</p>
+                  <p>
+                    To be recognize as an institution by delivering a quality,
+                    affordable and excellent patient care.
+                  </p>
                 </article>
               </div>
 
@@ -415,10 +490,12 @@ function App() {
                 <span className="section-kicker">OUR CORE VALUES</span>
                 <h3>C.A.R.E.</h3>
               </div>
+
               <div className="values-grid">
                 {coreValues.map((value) => (
                   <article className="value-card" key={value.letter}>
                     <span className="value-letter">{value.letter}</span>
+
                     <div>
                       <h4>{value.title}</h4>
                       <p>{value.description}</p>
@@ -434,11 +511,15 @@ function App() {
           </div>
         </section>
 
-        <section className="information-section section-anchor" id="information">
+        <section
+          className="information-section section-anchor"
+          id="information"
+        >
           <div className="container">
             <div className="section-heading">
               <div>
                 <span className="section-kicker">02 / EXPLORE</span>
+
                 <h2>
                   Our departments,
                   <br />
@@ -460,6 +541,7 @@ function App() {
                   <article className="info-card" key={card.number}>
                     <div className="info-card-top">
                       <span className="info-card-number">{card.number}</span>
+
                       <span className="info-card-icon">
                         <Icon size={24} strokeWidth={1.7} />
                       </span>
@@ -468,10 +550,10 @@ function App() {
                     <h3>{card.title}</h3>
                     <p>{card.description}</p>
 
-                <Link className="card-link" to={card.href}>
-                  Learn more
-                  <ChevronRight size={16} />
-                </Link>
+                    <Link className="card-link" to={card.href}>
+                      Learn more
+                      <ChevronRight size={16} />
+                    </Link>
                   </article>
                 );
               })}
@@ -515,17 +597,37 @@ function App() {
                   </div>
 
                   <ul className="department-list">
-                    {group.departments.map((department) => (
-                      <li key={department}>
-                        <span className="department-indicator" aria-hidden="true" />
-                        <span>{department}</span>
-                      </li>
-                    ))}
+                    {group.departments.map((department) => {
+                      const href = departmentLinks[department];
+
+                      return (
+                        <li key={department}>
+                          <span
+                            className="department-indicator"
+                            aria-hidden="true"
+                          />
+
+                          {href ? (
+                            <Link
+                              to={href}
+                              className="department-directory-link"
+                            >
+                              {department}
+                              <ChevronRight
+                                size={15}
+                                aria-hidden="true"
+                              />
+                            </Link>
+                          ) : (
+                            <span>{department}</span>
+                          )}
+                        </li>
+                      );
+                    })}
                   </ul>
                 </article>
               ))}
             </div>
-
           </div>
         </section>
 
@@ -533,13 +635,16 @@ function App() {
           <div className="container">
             <div className="directory-heading">
               <span className="section-kicker">OUR PEOPLE</span>
+
               <h2>
                 The people behind <span>patient care.</span>
               </h2>
+
               <p>
-                Meet the personnel listed in the hospital's administrative
+                Meet the personnel listed in the hospital&apos;s administrative
                 organizational chart. Names and roles should be verified by
-                hospital administration before this directory is publicly promoted.
+                hospital administration before this directory is publicly
+                promoted.
               </p>
             </div>
 
@@ -547,12 +652,19 @@ function App() {
               {staffGroups.map((group) => (
                 <section className="staff-group" key={group.title}>
                   <h3>{group.title}</h3>
+
                   <div className="staff-grid">
                     {group.members.map((member) => (
-                      <article className="staff-card" key={`${member.name}-${member.role}`}>
+                      <article
+                        className="staff-card"
+                        key={`${member.name}-${member.role}`}
+                      >
                         <span className="staff-avatar" aria-hidden="true">
-                          {member.name === "Name not listed" ? "—" : member.name.charAt(0)}
+                          {member.name === "Name not listed"
+                            ? "—"
+                            : member.name.charAt(0)}
                         </span>
+
                         <div>
                           <h4>{member.name}</h4>
                           <p>{member.role}</p>
@@ -566,7 +678,10 @@ function App() {
           </div>
         </section>
 
-        <section className="announcement-section section-anchor" id="announcements">
+        <section
+          className="announcement-section section-anchor"
+          id="announcements"
+        >
           <div className="container">
             <div className="announcement-panel">
               <div className="announcement-copy">
@@ -593,9 +708,11 @@ function App() {
               <div className="announcement-art" aria-hidden="true">
                 <div className="art-circle art-circle-large" />
                 <div className="art-circle art-circle-small" />
+
                 <div className="art-icon">
                   <Clock3 size={39} strokeWidth={1.3} />
                 </div>
+
                 <div className="art-line art-line-one" />
                 <div className="art-line art-line-two" />
                 <div className="art-line art-line-three" />
@@ -608,11 +725,13 @@ function App() {
           <div className="container contact-grid">
             <div className="contact-copy">
               <span className="section-kicker">04 / GET IN TOUCH</span>
+
               <h2>
                 Find the information
                 <br />
                 <span>you need.</span>
               </h2>
+
               <p>
                 Contact Twin Care Hospital Incorporated or visit our official
                 Facebook page for hospital information and updates.
@@ -624,64 +743,94 @@ function App() {
                 <span className="contact-icon">
                   <MapPin size={20} />
                 </span>
+
                 <span>
                   <strong>Hospital Address</strong>
                   <small>Tapatan Rd. Marungko, Angat, Bulacan</small>
                 </span>
               </div>
 
-              <a className="contact-row contact-row-link" href="tel:0448135421">
+              <a
+                className="contact-row contact-row-link"
+                href="tel:0448135421"
+              >
                 <span className="contact-icon">
                   <Phone size={20} />
                 </span>
+
                 <span>
                   <strong>Telephone</strong>
                   <small>044-813-5421</small>
                 </span>
-                <ArrowUpRight className="contact-row-arrow" size={16} />
+
+                <ArrowUpRight
+                  className="contact-row-arrow"
+                  size={16}
+                />
               </a>
 
-              <a className="contact-row contact-row-link" href="mailto:twincarehospital@yahoo.com">
+              <a
+                className="contact-row contact-row-link"
+                href="mailto:twincarehospital@yahoo.com"
+              >
                 <span className="contact-icon">
                   <Mail size={20} />
                 </span>
+
                 <span>
                   <strong>Official Email</strong>
                   <small>twincarehospital@yahoo.com</small>
                 </span>
-                <ArrowUpRight className="contact-row-arrow" size={16} />
+
+                <ArrowUpRight
+                  className="contact-row-arrow"
+                  size={16}
+                />
               </a>
 
               <a
                 className="contact-row contact-row-link"
                 href="https://www.facebook.com/profile.php?id=61552647747926"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
               >
                 <span className="contact-icon">
                   <ExternalLink size={20} />
                 </span>
+
                 <span>
                   <strong>Official Facebook Page</strong>
                   <small>Visit Twin Care Hospital on Facebook</small>
                 </span>
-                <ArrowUpRight className="contact-row-arrow" size={16} />
+
+                <ArrowUpRight
+                  className="contact-row-arrow"
+                  size={16}
+                />
               </a>
 
               <div className="contact-hours">
                 <div className="contact-hours-heading">
-                  <span className="contact-icon"><Clock3 size={20} /></span>
+                  <span className="contact-icon">
+                    <Clock3 size={20} />
+                  </span>
+
                   <div>
                     <strong>Confirmed 24/7 Services</strong>
                     <small>Open 24 hours a day, 7 days a week</small>
                   </div>
                 </div>
-                <ul>
-                  {operatingHours.map((service) => <li key={service}>{service}</li>)}
-                </ul>
-                <p className="hours-pending">OPD and ultrasound schedules are pending confirmation.</p>
-              </div>
 
+                <ul>
+                  {operatingHours.map((service) => (
+                    <li key={service}>{service}</li>
+                  ))}
+                </ul>
+
+                <p className="hours-pending">
+                  OPD and ultrasound schedules are pending confirmation.
+                </p>
+              </div>
             </div>
           </div>
         </section>
@@ -690,13 +839,14 @@ function App() {
       <footer className="site-footer">
         <div className="container footer-main">
           <a href="#home" className="brand footer-brand">
-          <img
-            className="brand-logo"
-            src="/images/tchi-logo.png"
-            alt=""
-            width={58}
-            height={58}
-          />
+            <img
+              className="brand-logo"
+              src="/images/tchi-logo.png"
+              alt=""
+              width={58}
+              height={58}
+            />
+
             <span className="brand-copy">
               <span className="brand-name">TWIN CARE</span>
               <span className="brand-subtitle">
@@ -718,6 +868,7 @@ function App() {
           <span>
             © {new Date().getFullYear()} Twin Care Hospital Incorporated
           </span>
+
           <span className="footer-status">
             <span className="status-dot" />
             Website in development
